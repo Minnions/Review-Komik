@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Komik Oupavioc</title>
+    <style>
+        :root {
+            --background-color: #000000;
+            --text-color: #FFFFFF;
+            --header-background-color: #0000FF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: var(--header-background-color);
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .header h1 {
+            font-size: 16px; /* Mengecilkan ukuran teks utama */
+            margin: 0;
+            padding-left: 40px; /* Tambahkan padding untuk menghindari overlap dengan tombol toggle */
+        }
+
+        .toggle-button {
+            position: absolute;
+            left: 10px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1001; /* Pastikan tombol berada di atas konten lainnya */
+            font-size: 24px; /* Ukuran ikon */
+            color: #FFFFFF; /* Warna ikon default */
+        }
+
+        .content {
+            padding-top: 60px; /* Menambahkan padding untuk menghindari overlap dengan header */
+        }
+
+        .review-section {
+            margin-top: 20px;
+        }
+
+        .review-item {
+            margin-bottom: 20px;
+        }
+
+        .realtime-box {
+            position: fixed;
+            top: 50px;
+            right: 10px;
+            background-color: #333333;
+            color: #FF0000; /* Warna teks merah */
+            padding: 5px; /* Mengurangi padding untuk menyesuaikan ukuran teks */
+            border-radius: 5px;
+            z-index: 1001; /* Pastikan kotak berada di atas konten lainnya */
+            font-size: 25%; /* Memperkecil ukuran teks menjadi 4 kali lebih kecil */
+        }
+
+        .dark-mode {
+            --background-color: #000000;
+            --text-color: #FFFFFF;
+            --header-background-color: #0000FF;
+        }
+
+        .light-mode {
+            --background-color: #FFFFFF;
+            --text-color: #000000;
+            --header-background-color: #ADD8E6;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body class="dark-mode">
+    <div class="header">
+        <button class="toggle-button" onclick="toggleMode()">
+            <i id="toggle-icon" class="fas fa-sun"></i>
+        </button>
+        <h1>Review Komik Oupavioc</h1>
+    </div>
+    <div class="realtime-box" id="datetime"></div>
+    <div class="content">
+        <!-- Review sections and items -->
+
+        <div class="review-section">
+            <div class="review-item">
+                <p>1. Rating: wait/10</p>
+                <p>Judul: akan hadir</p>
+                <p>Link: <a href="https://www.google.com">masih dalam test untuk saat ini jika kalian klik akan ditarik ke google</a></p>
+                <p>Penjelasan: menunggu</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateTime() {
+            var now = new Date();
+            var datetime = now.toLocaleString(); // Mengambil waktu lokal saat ini
+            document.getElementById("datetime").textContent = datetime; // Menampilkan waktu di elemen dengan ID "datetime"
+        }
+
+        // Memanggil updateTime() setiap detik untuk memperbarui waktu
+        setInterval(updateTime, 1000);
+
+        function toggleMode() {
+            var body = document.body;
+            var icon = document.getElementById("toggle-icon");
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        }
+    </script>
+</body>
+</html>
